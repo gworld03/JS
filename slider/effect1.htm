@@ -1,0 +1,61 @@
+<html>
+<head>
+<style>
+div{
+	width:530px;
+	height:340px;
+	display:inline-block;
+	position:absolute;
+	overflow:hidden;
+}
+img{
+	width:530px;
+	height:340px;
+	display:inline-block;
+	position:absolute;
+}
+</style>
+<script>
+	var images = document.getElementsByTagName("img");
+	function initImages(){
+	
+		var imgPos = 0;
+		for(i=0;i<images.length;i++){
+			images[i].style.left = imgPos + "px";
+			imgPos += images[i].width;
+		}	
+	
+	}
+
+	var sliderKey = '';
+	function onOffSlider(){
+	if(sliderKey !=''){
+		clearInterval(sliderKey); //because we need to stop the slider let see what happens?
+		return sliderKey=''; //because slider on code also runs...
+	} 
+	sliderKey = setInterval(function(){
+		
+		if(parseInt(images[images.length-1].style.left)<1)
+			return initImages(); //because we need to rearrange the images
+		for(i=0;i<images.length;i++){ 
+			images[i].style.left = (parseInt(images[i].style.left) - images[i].width) + "px";
+		}	
+
+	},200); // for change the speed of slider.
+	}
+
+
+</script>
+</head>
+<body>
+<input type="button" value="ON/OFF SLIDER"  onClick="onOffSlider()" /><br>
+<div>
+<img src="slider1.jpeg" />
+<img src="slider2.jpeg" />
+<img src="slider3.jpeg" />
+</div>
+<script>
+	initImages();
+</script>
+</body>
+</html>
