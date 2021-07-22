@@ -1,0 +1,29 @@
+<html>
+<head>
+<script>
+function onBulb(){
+	document.getElementsByTagName("img")[0].src="onBulb.jpeg";
+}
+function offBulb(){
+	document.getElementsByTagName("img")[0].src="offBulb.jpeg";
+}
+
+function onOffBulb(){
+
+	var src = document.getElementsByTagName("img")[0];
+
+	if(src.src.indexOf("onBulb.jpeg")>-1)
+		src.src = "offBulb.jpeg";
+	else
+		src.src="onBulb.jpeg";
+}
+</script>
+</head>
+<body>
+<img src="offBulb.jpeg" width="300px" />
+<input type="button" value="ON" onClick="onBulb()" />
+<input type="button" value="OFF" onClick="offBulb()" />
+
+<input type="button" value="ON-OFF" onClick="onOffBulb()" />
+</body>
+</html>
