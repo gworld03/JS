@@ -1,0 +1,54 @@
+<html>
+<head>
+<style>
+	body{
+		background:url('snowBackground.jpeg');
+		overflow:hidden;
+	}
+
+	.snowBall{
+		position:absolute;
+		opacity:1;
+	}
+</style>
+<script>
+
+function createSnowBall(){
+
+	var ball = document.createElement("img");
+	ball.src = "snow.png";
+	ball.style.left = Math.random()  * window.outerWidth;
+	ball.style.top = "-35px"; // for ball not appears directly to the document.
+	ball.style.width = (Math.random() * 50) +10;
+	ball.style.opacity = Math.random();
+
+	ball.className = "snowBall"; //add class for position absolute
+	document.body.appendChild(ball); // put element into dom
+
+	requestAnimationFrame(createSnowBall) // make continously snow balls.
+
+	function move(){
+		ball.style.top = (parseInt(ball.style.top) + Math.random()*5 ) + "px";
+		ball.style.left = (parseInt(ball.style.left) + Math.random() * 2 ) + "px";
+
+		if(Math.random() * 500 && parseInt(ball.style.top)>350){
+			ball.remove();
+			return;
+		}
+	
+		requestAnimationFrame(move) // for continously moving the snow ball.
+	}
+	
+	requestAnimationFrame(move);
+	
+}
+
+
+
+
+requestAnimationFrame(createSnowBall);
+
+</script>
+</head>
+<body>
+<body>
