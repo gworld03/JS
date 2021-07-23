@@ -1,4 +1,4 @@
-Pure JS Snow effect
+Pure JS Snowfall effect
 
 For video tutorial
 
