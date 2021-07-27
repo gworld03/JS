@@ -1,0 +1,77 @@
+<html>
+<head>
+<style>
+	body{
+		overflow:hidden;
+		margin:0;
+		padding:0;
+		height:100%;
+		width:100%;
+	}
+
+	.background{
+		background:url('mountainSky.png');
+		width:100%;
+		height:100%;
+	}
+
+	.sun{
+		background:url('sun.png');
+		background-repeat:no-repeat;
+		background-position:50% 50%;
+		width:100%;
+		height:200px; /*approx height*/
+		position:absolute;
+		top:50%;
+		z-index:3;
+	}
+
+	.sun-rays{
+		position:inherit;
+		border-radius:50%;
+		box-shadow:0px 0px 90px 100px #F9F6F0;
+		left:50%;
+		top:50%;
+		width:165px;
+		height:165px;
+		transform:translate(-50%,-50%); /* for center align the shadow */
+		z-index:2; /* for showing behind of sun */
+	}
+
+</style>
+</head>
+
+<body>
+<div class="background">
+	<img src="mountain.png" style="position:absolute;z-index:5" />
+	<div class="sun">
+		<div class="sun-rays">
+		</div>
+	</sun>
+</div>
+
+<script>
+
+	var sun = document.getElementsByClassName("sun")[0];
+	var sunPos = 100;
+	var rays = 100;
+	function sunRise(){
+		if(sunPos>5)
+			sun.style.top = (sunPos-=1) + "%";
+		sun.getElementsByClassName("sun-rays")[0].style.boxShadow="0px 0px "+(rays-10)+"px "+(rays+=3)+"px #F9F6F0";
+	}
+	setInterval(function(){requestAnimationFrame(sunRise)},300);
+
+Perfect
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
